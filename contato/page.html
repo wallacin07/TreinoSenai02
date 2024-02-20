@@ -4,10 +4,68 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        a{
+            text-align: center;
+            color: blueviolet;
+            font-size: 20px;
+        }
+    </style>
+    <script src="codigo.js"></script>
 </head>
 <body>
-    <h1>
-        Contato
-    </h1>
-</body>
+    <a href="../menu/page.html">voltar</a>
+    <h1>Contato</h1>
+    <h2>Insira dados iniciais para envio</h2>
+
+    <label for="">Seu nome</label>
+    <input type="text" id="nome" placeholder="FALA O NOME PRR!">
+
+        <br><br>
+
+    <label for="mensagem"></label>
+    <textarea id="mensagem" placeholder="Digite suas observações"></textarea>
+    <br><br>
+    <button onclick="conferirmensagem()">Conferir mensagem</button>
+    <br><br>
+
+    <p>Nome: <span id="confNome"></span></p>
+    <p>Observações: <span id="confMsg"></span></p>
+    <p>Data: <span id="confDate"></span></p>
+
+    <br><br>
+        <button onclick="enviar()">Enviar mensagem</button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </body>
+
+
+
 </html>
