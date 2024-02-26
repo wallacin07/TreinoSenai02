@@ -1,0 +1,31 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+table{
+    border-collapse: collapse;
+
+}
+table td{
+    border: 1px solid black;
+    text-align: center;
+}
+
+table th{
+    border: 1px solid black;
+    min-width: 100px;
+}
+
+th{
+    background: burlywood;
+}
+
+h1{
+    color: orangered;
+    font-size: 400%;
+    text-shadow: 10px, 10px, 10px black;
+}

@@ -4,13 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Controle de estoque</title>
-    <style>
-        a{
-            color: blueviolet;
-            font-size: 20px;
-        }
-    </style>
+ <link rel="stylesheet" href=".\style.css">
+
+
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.3/xlsx.full.min.js"></script>
+     <script src="script.js"></script>
+
 </head>
+
+
+
+
+
+
+
+
+
+
+
 <body>
     <h1>
         Tabela
@@ -19,16 +30,36 @@
     <a href="../menu/page.html">voltar</a>
     <br><br>
     <div>
-        <input type="text" placeholder="nome do produto" id="nome">
+        <input type="text" placeholder="Descrição" id="nome" , >
         <br><br>
-        <input type="text" placeholder="Valor do produto" id="valor">
+        <input type="number" placeholder="Valor do produto" id="valor">
         <br><br>
-        <input type="text" placeholder="Quantidade" id="Quantidade">
+        <input type="number" placeholder="Quantidade" id="quantidade">
         <br><br>
     </div>
 
     <div>
-        <button onclick="adicionarItem()">Enviar informaçõe❤❤</button>
+        <button onclick="adicionarItem()">Adicionar a tabela </button>
+    </div>
+    <br><br>
+
+    <div>
+        <table id="tabela">
+            <thead>
+                    <tr>
+                        <th>Descrição</th>
+                        <th>Valor</th>
+                        <th>Quantidade</th>
+                        <th>Total</th>
+                    </tr>
+            </thead>
+            <tbody></tbody>
+
+        </table>
+    </div>
+    <br>
+    <div>
+        <button onclick="exportarParaExcel()">Gerar planilha</button>
     </div>
 </body>
 </html>
