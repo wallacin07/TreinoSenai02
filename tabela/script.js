@@ -1,35 +1,79 @@
-function adicionarItem(){
-    //Obter valores
-    var nome = document.getElementById('nome').value;
-    var valor = document.getElementById('valor').value;
-    var quantidade = document.getElementById('quantidade').value;
-    var total = valor*quantidade;
+ // Funções para manipular a tabela
+ var data = ""
+ function adicionarItem() {
+    // Obter valores dos inputs
+    data = document.getElementById("Dia").value;
+    var nome = document.getElementById("nome").value;
+    var valor = parseFloat(document.getElementById("valor").value);
+    var quantidade = parseInt(document.getElementById("quantidade").value);
+    console.log(nome,valor, quantidade);
 
-    //verificar se existe
-    if(!nome || !valor || !quantidade){
-        alert("preencha os campos!!");
-        return;
+    // Validar valores
+    if (!nome || !valor || !quantidade || !data) {
+      alert("Preencha todos os campos!");
+      return;
     }
 
-    //criação da tabela e suas linhas
-    var tabela = document.getElementById('tabela').getElementsByTagName('tbody')[0];
+    // Calcular total
+    var total = valor * quantidade;
+
+    // Criar nova linha na tabela
+    var tabela = document.getElementById("tabela").getElementsByTagName("tbody")[0];
     var novaLinha = tabela.insertRow(tabela.rows.length);
-    var celulaNome = novaLinha.insertCell(0);
-    var celulaValor = novaLinha.insertCell(1);
-    var celulaQuantidade = novaLinha.insertCell(2);
-    var celulaTotal = novaLinha.insertCell(3);
 
-    celulaNome.innerHTML = nome;
-    celulaValor.innerHTML = valor;
-    celulaQuantidade.innerHTML = quantidade;
-    celulaTotal.innerHTML = total;
+    // Inserir valores nas células
+    document.getElementById("dateprint").textContent = formatarData(data)
+    novaLinha.insertCell(0).textContent = nome;
+    novaLinha.insertCell(1).textContent = formatarMoeda(valor);
+    novaLinha.insertCell(2).textContent = quantidade;
+    novaLinha.insertCell(3).textContent = formatarMoeda(total);
 
-}
+    // // Adicionar botão de remover
+    // var celulaAcoes = novaLinha.insertCell(4);
+    // var botaoRemover = document.createElement("button");
+    // botaoRemover.textContent = "Remover";
+    // botaoRemover.classList.add("btn-remover");
+    // botaoRemover.onclick = function () {
+    //   removerLinha(this);
+    // };
+    // celulaAcoes.appendChild(botaoRemover);
 
-function exportarParaExcel(){
-    var tabela = document.getElementById('tabela')
-    var nomeArquivo = 'tabela_produtos.xlsx'
-    var wb = XLSX.utils.table_to_book(tabela,{sheet: 'Tabela de Produtos'})
-    XLSX.writeFile(wb, nomeArquivo)
-}
+    // Limpar campos
+    limparCampos();
+  }
+
+  function removerLinha(botao) {
+    var linha = botao.parentNode.parentNode;
+    linha.parentNode.removeChild(linha);
+  }
+
+  function limparTabela() {
+    var tabela = document.getElementById("tabela").getElementsByTagName("tbody")[0];
+    while (tabela.firstChild) {
+      tabela.removeChild(tabela.firstChild);
+    }
+  }
+
+  function limparCampos() {
+    document.getElementById("nome").value = "";
+    document.getElementById("valor").value = "";
+    document.getElementById("quantidade").value = "";
+  }
+
+  function formatarMoeda(valor) {
+    return valor.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+  }
+  function formatarData(data){
+    return data.toLocaleString("pt-BR", {day: "numeric", month: "numeric", year: "numeric"})
+  }
+
+    function exportarParaExcel() {
+        var tabela = document.getElementById("tabela");
+        var nomeArquivo = "Controle_Estoque.xlsx";
+        var wb = XLSX.utils.table_to_book(tabela, { sheet: "Controle de Estoque" });
+         wb.Sheets["Controle de Estoque"].E1  = { t: "s", v: "Data:" };
+         wb.Sheets["Controle de Estoque"].F1 = { t: "s", v: formatarData(data) };
+        XLSX.writeFile(wb, nomeArquivo);
+        alert("Planilha exportada com sucesso! \n\nNome do arquivo: " + nomeArquivo);
+    }
 

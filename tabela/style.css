@@ -1,31 +1,107 @@
-body{
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0; /* Light gray background */
+    color: #333; /* Dark gray text */
+  }
+  
+  header {
+    background-color: #4CAF50; /* Green header */
+    color: white;
+    padding: 15px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    flex-direction: column;
-}
-
-
-table{
+  }
+  
+  header h1 {
+    font-size: 24px;
+    margin: 0;
+  }
+  
+  section {
+    padding: 25px;
+    margin: 35px auto;
+    max-width: 1150px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  form {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 50px;
+  }
+  
+  form label {
+    width: 135px;
+    margin-bottom: 0px;
     border-collapse: collapse;
-
-}
-table td{
-    border: 1px solid black;
     text-align: center;
-}
+    justify-content: center;
+    
 
-table th{
-    border: 1px solid black;
-    min-width: 100px;
-}
+  }
+  
+  form input, form button {
+    padding: 8px 10px;
+    border: 1px solid #a4a4a4;
+    border-radius: 4px;
+  }
+  
+  form button {
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    display: flex;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #000000;
+    margin-bottom: 20px;
+  }
+  
+  table th, table td {
+    padding: 10px;
+    border: 1px solid #000000;
+    text-align: left;
+  }
+  
+  table th {
+    background-color: #c0baba; /* Light gray for headers */
+    font-weight: bold;
+  }
 
-th{
-    background: burlywood;
-}
+  a{
+    background-color: #0f8e39;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    padding: 8px 10px;
+    border: 1px solid green ;
+    border-radius: 4px;
+  }
+  .btn-del{
+    background-color: #4CAF50;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    padding: 8px 10px;
+    border-radius: 4px;
+    border: 1px solid #126831;
+    font-weight: bold;
+  }
 
-h1{
-    color: orangered;
-    font-size: 400%;
-    text-shadow: 10px, 10px, 10px black;
-}
+  .btn-export{
+    background-color: #4CAF50;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    padding: 8px 10px;
+    border-radius: 4px;
+    border: 1px solid #126831;
+    font-weight: bold;
+  }
