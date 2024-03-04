@@ -2,14 +2,13 @@
  var data = ""
  function adicionarItem() {
     // Obter valores dos inputs
-    data = document.getElementById("Dia").value;
     var nome = document.getElementById("nome").value;
     var valor = parseFloat(document.getElementById("valor").value);
     var quantidade = parseInt(document.getElementById("quantidade").value);
     console.log(nome,valor, quantidade);
 
     // Validar valores
-    if (!nome || !valor || !quantidade || !data) {
+    if (!nome || !valor || !quantidade) {
       alert("Preencha todos os campos!");
       return;
     }
@@ -22,7 +21,6 @@
     var novaLinha = tabela.insertRow(tabela.rows.length);
 
     // Inserir valores nas células
-    document.getElementById("dateprint").textContent = formatarData(data)
     novaLinha.insertCell(0).textContent = nome;
     novaLinha.insertCell(1).textContent = formatarMoeda(valor);
     novaLinha.insertCell(2).textContent = quantidade;
@@ -63,16 +61,11 @@
   function formatarMoeda(valor) {
     return valor.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
   }
-  function formatarData(data){
-    return data.toLocaleString("pt-BR", {day: "numeric", month: "numeric", year: "numeric"})
-  }
 
     function exportarParaExcel() {
         var tabela = document.getElementById("tabela");
         var nomeArquivo = "Controle_Estoque.xlsx";
         var wb = XLSX.utils.table_to_book(tabela, { sheet: "Controle de Estoque" });
-         wb.Sheets["Controle de Estoque"].E1  = { t: "s", v: "Data:" };
-         wb.Sheets["Controle de Estoque"].F1 = { t: "s", v: formatarData(data) };
         XLSX.writeFile(wb, nomeArquivo);
         alert("Planilha exportada com sucesso! \n\nNome do arquivo: " + nomeArquivo);
     }
